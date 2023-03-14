@@ -1,17 +1,18 @@
 package com.training.elevenambulanceservice.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 
 @AllArgsConstructor
 @ToString
+@NoArgsConstructor
 public class Ambulance {
+
+    @Getter
+    private Long ambulanceId;
 
     @Getter
     private String hospitalName;

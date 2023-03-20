@@ -30,6 +30,8 @@ public class Ambulance {
     @Getter
     private List<String> phoneNumbers;
 
+
+
     public Ambulance(String hospitalName, String location) {
         this.hospitalName = hospitalName;
         this.location = location;

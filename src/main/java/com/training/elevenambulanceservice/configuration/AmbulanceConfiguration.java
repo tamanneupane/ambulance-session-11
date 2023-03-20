@@ -1,6 +1,7 @@
 package com.training.elevenambulanceservice.configuration;
 
 import com.training.elevenambulanceservice.model.Ambulance;
+import com.training.elevenambulanceservice.service.AmbulanceService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -20,5 +21,10 @@ public class AmbulanceConfiguration {
 //    public Ambulance createAnotherAmbulance(String name){
 //        System.out.println("Ambulance 2 object is created");
 //        return new Ambulance();
+//    }
+
+//    @Bean
+//    public AmbulanceService createAmbulanceService(){
+//        return  new AmbulanceService();
 //    }
 }

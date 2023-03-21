@@ -3,6 +3,7 @@ package com.training.elevenambulanceservice.controller;
 
 import com.training.elevenambulanceservice.model.Address;
 import com.training.elevenambulanceservice.model.Ambulance;
+import com.training.elevenambulanceservice.model.dto.AmbulanceDTO;
 import com.training.elevenambulanceservice.service.AmbulanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,25 +45,21 @@ public class AmbulanceController {
     }
 
     @PostMapping(value = "/api/v1/create-ambulance")
-    public Ambulance createAmbulance(@RequestBody Ambulance ambulance){
+    public AmbulanceDTO createAmbulance(@RequestBody AmbulanceDTO ambulanceDTO){
         AmbulanceService ambulanceService = new AmbulanceService();
-        System.out.println(ambulance);
-        return ambulance;
+        System.out.println(ambulanceDTO);
+        return ambulanceDTO;
     }
 
     @PutMapping(value = "/api/v1/update-ambulance/{id}")
     public Ambulance updateAmbulance(@PathVariable(value = "id") Long ambulanceId, @RequestBody Ambulance ambulance){
-        AmbulanceService ambulanceService = new AmbulanceService();
-        Address address1 = new Address();
-        Ambulance ambulance1 = new Ambulance(1L,"Alka Hospital", "Jawlakhel", "533392", address1,  List.of());
+        Ambulance ambulance1 = new Ambulance(1L,"Alka Hospital", "Jawlakhel", "533392");
         return ambulance1;
     }
 
     @PatchMapping(value = "/api/v1/update-ambulance-phone/{id}")
     public Ambulance updateAmbulancePhoneNumber(@PathVariable(value = "id") Long ambulanceId, @RequestBody List<String> phoneNumbers){
-        AmbulanceService ambulanceService = new AmbulanceService();
-        Address address1 = new Address();
-        Ambulance ambulance1 = new Ambulance(1L,"Alka Hospital", "Jawlakhel", "533392", address1,  List.of());
+        Ambulance ambulance1 = new Ambulance(1L,"Alka Hospital", "Jawlakhel", "533392");
         return ambulance1;
     }
 

@@ -1,23 +1,15 @@
-package com.training.elevenambulanceservice.model;
+package com.training.elevenambulanceservice.model.dto;
 
 
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-@Entity
-@Table(name = "ambulance_tbl")
-public class Ambulance {
-
-    @Getter
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long ambulanceId;
+public class AmbulanceDTO {
 
     @Getter
     private String hospitalName;
@@ -37,7 +29,7 @@ public class Ambulance {
 
 
 
-    public Ambulance(String hospitalName, String location) {
+    public AmbulanceDTO(String hospitalName, String location) {
         this.hospitalName = hospitalName;
         this.location = location;
     }

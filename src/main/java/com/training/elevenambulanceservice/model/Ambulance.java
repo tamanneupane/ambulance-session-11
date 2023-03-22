@@ -20,13 +20,17 @@ public class Ambulance {
     private Long ambulanceId;
 
     @Getter
+    @Setter
+    @Column(length = 100)
     private String hospitalName;
 
     @Getter
+    @Setter
     private String location;
 
     @Getter
     @Setter
+    @Column(length = 15)
     private String phoneNumber;
 
 //    @Getter

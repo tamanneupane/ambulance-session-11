@@ -2,6 +2,9 @@ package com.training.elevenambulanceservice.service;
 
 import com.training.elevenambulanceservice.model.Address;
 import com.training.elevenambulanceservice.model.Ambulance;
+import com.training.elevenambulanceservice.model.dto.AmbulanceDTO;
+import com.training.elevenambulanceservice.repository.AmbulanceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,6 +12,9 @@ import java.util.List;
 
 @Service
 public class AmbulanceService {
+
+    @Autowired
+    private AmbulanceRepository ambulanceRepository;
 
     public List<Ambulance> getListOfAmbulance(){
         Address address1 = new Address();
@@ -21,5 +27,14 @@ public class AmbulanceService {
         list.add(ambulance3);
 
         return  list;
+    }
+
+    public Ambulance saveAmbulance(AmbulanceDTO ambulanceDTO){
+        Ambulance ambulance = new Ambulance();
+        ambulance.setPhoneNumber(ambulanceDTO.getPhoneNumber());
+        ambulance.setHospitalName(ambulanceDTO.getHospitalName());
+        ambulance.setLocation(ambulanceDTO.getLocation());
+        Ambulance savedAmbulance = ambulanceRepository.save(ambulance);
+        return savedAmbulance;
     }
 }

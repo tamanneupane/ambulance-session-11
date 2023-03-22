@@ -27,10 +27,4 @@ public class AmbulanceDTO {
 //    @Getter
 //    private List<String> phoneNumbers;
 
-
-
-    public AmbulanceDTO(String hospitalName, String location) {
-        this.hospitalName = hospitalName;
-        this.location = location;
-    }
 }

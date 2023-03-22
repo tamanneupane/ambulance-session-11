@@ -17,7 +17,7 @@ public class AmbulanceController {
      /*
         HTTP Methods :
         1. GET - Asking for already stored data
-        2. POST - If you want to store some information in the server
+        2. POST - If you want to store some information in the database
         3. PUT - Already saved information update
         4. PATCH - Already saved information update but single value
         5. DELETE - If you want to delete the data
@@ -45,10 +45,10 @@ public class AmbulanceController {
     }
 
     @PostMapping(value = "/api/v1/create-ambulance")
-    public AmbulanceDTO createAmbulance(@RequestBody AmbulanceDTO ambulanceDTO){
-        AmbulanceService ambulanceService = new AmbulanceService();
+    public Ambulance createAmbulance(@RequestBody AmbulanceDTO ambulanceDTO){
         System.out.println(ambulanceDTO);
-        return ambulanceDTO;
+        Ambulance savedAmbulance = ambulanceService.saveAmbulance(ambulanceDTO);
+        return savedAmbulance;
     }
 
     @PutMapping(value = "/api/v1/update-ambulance/{id}")

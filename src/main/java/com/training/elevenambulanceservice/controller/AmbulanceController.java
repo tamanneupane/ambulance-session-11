@@ -4,6 +4,7 @@ package com.training.elevenambulanceservice.controller;
 import com.training.elevenambulanceservice.model.Address;
 import com.training.elevenambulanceservice.model.Ambulance;
 import com.training.elevenambulanceservice.model.dto.AmbulanceDTO;
+import com.training.elevenambulanceservice.model.dto.AmbulancePhoneNumberDTO;
 import com.training.elevenambulanceservice.service.AmbulanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,10 +39,12 @@ public class AmbulanceController {
     }
 
     @GetMapping(value = "/api/v1/get-ambulance/{id}")
-    public Long getAmbulanceDetail(@PathVariable(value = "id") Long ambulanceId){
-        AmbulanceService ambulanceService = new AmbulanceService();
-        System.out.println(ambulanceId);
-        return ambulanceId;
+    public Ambulance getAmbulanceDetail(@PathVariable(value = "id") Long ambulanceId){
+        try {
+            return ambulanceService.getAmbulanceDetail(ambulanceId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @PostMapping(value = "/api/v1/create-ambulance")
@@ -52,20 +55,23 @@ public class AmbulanceController {
     }
 
     @PutMapping(value = "/api/v1/update-ambulance/{id}")
-    public Ambulance updateAmbulance(@PathVariable(value = "id") Long ambulanceId, @RequestBody Ambulance ambulance){
-        Ambulance ambulance1 = new Ambulance(1L,"Alka Hospital", "Jawlakhel", "533392");
-        return ambulance1;
+    public Ambulance updateAmbulance(@PathVariable(value = "id") Long ambulanceId, @RequestBody AmbulanceDTO ambulanceDTO){
+        try {
+            return ambulanceService.updateAmbulanceData(ambulanceId, ambulanceDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @PatchMapping(value = "/api/v1/update-ambulance-phone/{id}")
-    public Ambulance updateAmbulancePhoneNumber(@PathVariable(value = "id") Long ambulanceId, @RequestBody List<String> phoneNumbers){
+    public Ambulance updateAmbulancePhoneNumber(@PathVariable(value = "id") Long ambulanceId, @RequestBody AmbulancePhoneNumberDTO ambulancePhoneNumberDTO){
         Ambulance ambulance1 = new Ambulance(1L,"Alka Hospital", "Jawlakhel", "533392");
         return ambulance1;
     }
 
     @DeleteMapping(value = "/api/v1/delete-ambulance/{id}")
     public String deleteAmbulance(@PathVariable(value = "id") Long ambulanceId){
-        AmbulanceService ambulanceService = new AmbulanceService();
-        return "Ambulance Deleted";
+       ambulanceService.deleteAmbulance(ambulanceId);
+       return "Ambulance Deleted Successfully";
     }
 }

@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +89,7 @@ public class AmbulanceController {
                     })
     })
     @PostMapping(value = "/api/v1/create-ambulance")
-    public ResponseEntity<Ambulance> createAmbulance(@RequestBody AmbulanceDTO ambulanceDTO){
+    public ResponseEntity<Ambulance> createAmbulance(@RequestBody @Valid AmbulanceDTO ambulanceDTO){
         System.out.println(ambulanceDTO);
         Ambulance savedAmbulance = ambulanceService.saveAmbulance(ambulanceDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedAmbulance);

@@ -1,5 +1,6 @@
 package com.training.elevenambulanceservice.service;
 
+import com.training.elevenambulanceservice.exceptions.AmbulanceNotFoundException;
 import com.training.elevenambulanceservice.model.Address;
 import com.training.elevenambulanceservice.model.Ambulance;
 import com.training.elevenambulanceservice.model.dto.AmbulanceDTO;
@@ -30,7 +31,7 @@ public class AmbulanceService {
         return savedAmbulance;
     }
 
-    public Ambulance updateAmbulanceData(Long ambulanceId, AmbulanceDTO ambulanceDTO) throws Exception{
+    public Ambulance updateAmbulanceData(Long ambulanceId, AmbulanceDTO ambulanceDTO) {
         Optional<Ambulance> ambulanceOptional = ambulanceRepository.findById(ambulanceId);
         if(ambulanceOptional.isPresent()){
             Ambulance availableAmbulance = ambulanceOptional.get();
@@ -40,16 +41,16 @@ public class AmbulanceService {
 
             return ambulanceRepository.save(availableAmbulance);
         }else{
-            throw new Exception("The ambulance with the provided id was not found");
+            throw new AmbulanceNotFoundException("The ambulance with the provided id was not found");
         }
     }
 
-    public Ambulance getAmbulanceDetail(Long ambulanceId) throws Exception{
+    public Ambulance getAmbulanceDetail(Long ambulanceId){
         Optional<Ambulance> ambulanceOptional = ambulanceRepository.findById(ambulanceId);
         if(ambulanceOptional.isPresent()){
             return  ambulanceOptional.get();
         }else{
-            throw new Exception("The ambulance with the provided id was not found");
+            throw new AmbulanceNotFoundException("The ambulance with the provided id was not found");
         }
     }
 

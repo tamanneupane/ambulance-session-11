@@ -70,11 +70,7 @@ public class AmbulanceController {
 
     @GetMapping(value = "/api/v1/get-ambulance/{id}")
     public ResponseEntity<Ambulance> getAmbulanceDetail(@PathVariable(value = "id") Long ambulanceId){
-        try {
-            return ResponseEntity.status(200).body(ambulanceService.getAmbulanceDetail(ambulanceId));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return ResponseEntity.status(200).body(ambulanceService.getAmbulanceDetail(ambulanceId));
     }
 
     @Operation(summary = "Create Ambulance")
@@ -97,11 +93,7 @@ public class AmbulanceController {
 
     @PutMapping(value = "/api/v1/update-ambulance/{id}")
     public ResponseEntity<Ambulance> updateAmbulance(@PathVariable(value = "id") Long ambulanceId, @RequestBody AmbulanceDTO ambulanceDTO){
-        try {
-            return ResponseEntity.status(200).body(ambulanceService.updateAmbulanceData(ambulanceId, ambulanceDTO));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return ResponseEntity.status(200).body(ambulanceService.updateAmbulanceData(ambulanceId, ambulanceDTO));
     }
 
     @PatchMapping(value = "/api/v1/update-ambulance-phone/{id}")

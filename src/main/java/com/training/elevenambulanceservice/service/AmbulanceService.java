@@ -23,10 +23,11 @@ public class AmbulanceService {
     }
 
     public Ambulance saveAmbulance(AmbulanceDTO ambulanceDTO){
+        Address address = new Address(ambulanceDTO.getAddress().getCountry(), ambulanceDTO.getAddress().getState(), ambulanceDTO.getAddress().getStreet());
         Ambulance ambulance = new Ambulance();
         ambulance.setPhoneNumber(ambulanceDTO.getPhoneNumber());
         ambulance.setHospitalName(ambulanceDTO.getHospitalName());
-        ambulance.setLocation(ambulanceDTO.getLocation());
+        ambulance.setAddress(address);
         Ambulance savedAmbulance = ambulanceRepository.save(ambulance);
         return savedAmbulance;
     }
@@ -34,9 +35,10 @@ public class AmbulanceService {
     public Ambulance updateAmbulanceData(Long ambulanceId, AmbulanceDTO ambulanceDTO) {
         Optional<Ambulance> ambulanceOptional = ambulanceRepository.findById(ambulanceId);
         if(ambulanceOptional.isPresent()){
+            Address address = new Address(ambulanceDTO.getAddress().getCountry(), ambulanceDTO.getAddress().getState(), ambulanceDTO.getAddress().getStreet());
             Ambulance availableAmbulance = ambulanceOptional.get();
             availableAmbulance.setHospitalName(ambulanceDTO.getHospitalName());
-            availableAmbulance.setLocation(ambulanceDTO.getLocation());
+            availableAmbulance.setAddress(address);
             availableAmbulance.setPhoneNumber(ambulanceDTO.getPhoneNumber());
 
             return ambulanceRepository.save(availableAmbulance);

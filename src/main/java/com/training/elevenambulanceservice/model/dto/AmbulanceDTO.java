@@ -16,9 +16,9 @@ public class AmbulanceDTO {
     @Getter
     private String hospitalName;
 
-    @NotBlank(message = "Location Name cannot be empty")
     @Getter
-    private String location;
+    @Setter
+    private AddressDTO address;
 
     @Getter
     @Setter

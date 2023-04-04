@@ -26,23 +26,12 @@ public class Ambulance {
 
     @Getter
     @Setter
-    private String location;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     @Getter
     @Setter
     @Column(length = 15)
     private String phoneNumber;
 
-//    @Getter
-//    private Address address;
-//
-//    @Getter
-//    private List<String> phoneNumbers;
-
-
-
-    public Ambulance(String hospitalName, String location) {
-        this.hospitalName = hospitalName;
-        this.location = location;
-    }
 }

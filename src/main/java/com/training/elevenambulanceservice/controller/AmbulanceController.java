@@ -96,11 +96,11 @@ public class AmbulanceController {
         return ResponseEntity.status(200).body(ambulanceService.updateAmbulanceData(ambulanceId, ambulanceDTO));
     }
 
-    @PatchMapping(value = "/api/v1/update-ambulance-phone/{id}")
-    public ResponseEntity<Ambulance> updateAmbulancePhoneNumber(@PathVariable(value = "id") Long ambulanceId, @RequestBody AmbulancePhoneNumberDTO ambulancePhoneNumberDTO){
-        Ambulance ambulance1 = new Ambulance(1L,"Alka Hospital", "Jawlakhel", "533392");
-        return ResponseEntity.status(200).body(ambulance1);
-    }
+//    @PatchMapping(value = "/api/v1/update-ambulance-phone/{id}")
+//    public ResponseEntity<Ambulance> updateAmbulancePhoneNumber(@PathVariable(value = "id") Long ambulanceId, @RequestBody AmbulancePhoneNumberDTO ambulancePhoneNumberDTO){
+//        Ambulance ambulance1 = new Ambulance(1L,"Alka Hospital", "Jawlakhel", "533392");
+//        return ResponseEntity.status(200).body(ambulance1);
+//    }
 
     @DeleteMapping(value = "/api/v1/delete-ambulance/{id}")
     @ApiResponses(value = {

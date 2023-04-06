@@ -31,7 +31,9 @@ public class Ambulance {
 
     @Getter
     @Setter
-    @Column(length = 15)
-    private String phoneNumber;
+    @Column
+    @ElementCollection
+    @CollectionTable(name = "phone_tbl", joinColumns = @JoinColumn(name = "ambulance_id"))
+    private List<String> phoneNumber;
 
 }

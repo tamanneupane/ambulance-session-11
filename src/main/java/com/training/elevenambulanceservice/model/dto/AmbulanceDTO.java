@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -22,8 +23,8 @@ public class AmbulanceDTO {
 
     @Getter
     @Setter
-    @Pattern(regexp = "(?:\\(?\\+977\\)?)?[9][6-9]\\d{8}|01[-]?[0-9]{7}", message = "Mobile number is not valid")
-    private String phoneNumber;
+//    @Pattern(regexp = "(?:\\(?\\+977\\)?)?[9][6-9]\\d{8}|01[-]?[0-9]{7}", message = "Mobile number is not valid")
+    private List<String> phoneNumber;
 
 //    @Getter
 //    private Address address;

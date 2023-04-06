@@ -104,7 +104,7 @@ public class AmbulanceController {
 
     @DeleteMapping(value = "/api/v1/delete-ambulance/{id}")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Deleted Successfully"),
+            @ApiResponse(responseCode = "204", description = "Deleted Successfully"),
             @ApiResponse(responseCode = "500", description = "Hospital not found")
     })
     public ResponseEntity deleteAmbulance(@PathVariable(value = "id") Long ambulanceId){

@@ -58,7 +58,7 @@ public class AmbulanceController {
 
     @GetMapping(value = "/api/v1/ping")
     public String ping(){
-        return "Ping Success";
+        return "Ambulance service is working fine";
     }
 
     @Operation(summary = "Get list of all ambulance available")
